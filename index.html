@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Tổ chức Sinh Nhật Online</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f382.png">
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Tạo Thiệp Sinh Nhật Online 🎂</h1>
+    <form id="birthdayForm">
+      <label>Họ tên người sinh nhật</label>
+      <input type="text" required name="name" placeholder="Nhập tên...">
+
+      <label>Ngày sinh</label>
+      <input type="date" required name="date">
+
+      <label>Chủ đề biểu tượng</label>
+      <div class="emoji-picker">
+        <label><input type="radio" name="emoji" value="🎂" checked> 🎂</label>
+        <label><input type="radio" name="emoji" value="🎈"> 🎈</label>
+        <label><input type="radio" name="emoji" value="🎉"> 🎉</label>
+        <label><input type="radio" name="emoji" value="🥳"> 🥳</label>
+        <label><input type="radio" name="emoji" value="🎁"> 🎁</label>
+      </div>
+
+      <label>Up ảnh người sinh nhật</label>
+      <input type="file" accept="image/*" name="photo" id="photoInput">
+
+      <button type="submit" class="main-btn">Tạo Thiệp & QR Sinh Nhật</button>
+    </form>
+    <div id="qrResult" class="qr-section" style="display:none;">
+      <h2>Mã QR Thiệp Sinh Nhật của bạn 🎊</h2>
+      <div id="qrBox"></div>
+      <p>Quét mã QR này để mở hiệu ứng chúc mừng sinh nhật!</p>
+      <a id="birthdayLink" class="main-btn" target="_blank">Xem thử thiệp sinh nhật</a>
+      <button class="main-btn" onclick="window.location.reload()">Tạo mới</button>
+    </div>
+  </div>
+  <footer>
+    <small>Made with ❤️ | <a href="https://github.com/tunglor25" target="_blank">tunglor25</a></small>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
