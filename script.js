@@ -17,7 +17,7 @@ form.addEventListener('submit', async function (e) {
     photoUrl = await toBase64(file);
   }
 
-  // Encode data (dùng encodeURIComponent để an toàn)
+  // Encode data
   const data = {
     n: name,
     d: date,
@@ -27,23 +27,36 @@ form.addEventListener('submit', async function (e) {
   const encodeData = btoa(unescape(encodeURIComponent(JSON.stringify(data))));
   const url = `${window.location.origin}${window.location.pathname.replace('index.html','')}birthday.html?data=${encodeData}`;
 
-  // Tạo QR code với trang trí sinh nhật
+  // Sửa lỗi: dùng số 3 thay vì QRCode.CorrectLevel.H nếu bị lỗi
   qrBox.innerHTML = '';
-  const qr = new QRCode(qrBox, {
-    text: url,
-    width: 220,
-    height: 220,
-    colorDark : "#222",
-    colorLight : "#FFF8F0",
-    correctLevel : QRCode.CorrectLevel.H
-  });
-  // Thêm trang trí quanh QR
-  qrBox.style.position = 'relative';
+  try {
+    new QRCode(qrBox, {
+      text: url,
+      width: 220,
+      height: 220,
+      colorDark : "#222",
+      colorLight : "#FFF8F0",
+      correctLevel : (window.QRCode && QRCode.CorrectLevel && QRCode.CorrectLevel.H) ? QRCode.CorrectLevel.H : 3 // fallback
+    });
+  } catch(e) {
+    // fallback nếu vẫn lỗi
+    new QRCode(qrBox, {
+      text: url,
+      width: 220,
+      height: 220,
+      colorDark : "#222",
+      colorLight : "#FFF8F0",
+      correctLevel : 3
+    });
+  }
+
+  // Trang trí quanh QR
   qrBox.innerHTML += `<div class="qr-decoration">
     <span class="qr-cake">🎂</span>
     <span class="qr-balloons">🎈🎈🎈</span>
     <span class="qr-confetti">✨🎉✨</span>
   </div>`;
+
   // Hiện link
   birthdayLink.href = url;
 
