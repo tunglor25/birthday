@@ -4,6 +4,11 @@
     --dark-color: #d23369;
     --light-color: #fff0f3;
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 
 * {
     margin: 0;
@@ -56,6 +61,13 @@ body {
         transform: translateY(-100px) rotate(360deg);
         opacity: 0;
     }
+}
+.card-content {
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .card-container {
@@ -144,14 +156,27 @@ body {
     z-index: 5;
 }
 
+/* Responsive cho card-content */
+@media (max-width: 768px) {
+  .qr-code {
+    width: 140px;
+    height: 140px;
+  }
+
+  .continue-btn {
+    font-size: 14px;
+    padding: 10px 24px;
+  }
+}
+
 @media (max-width: 480px) {
-    .qr-code {
-        width: 200px;
-        height: 200px;
-    }
-    
-    .continue-btn {
-        padding: 10px 25px;
-        font-size: 14px;
-    }
+  .qr-code {
+    width: 120px;
+    height: 120px;
+  }
+
+  .continue-btn {
+    font-size: 13px;
+    padding: 8px 20px;
+  }
 }
