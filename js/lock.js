@@ -9,11 +9,15 @@ document.addEventListener("DOMContentLoaded", function () {
 function createFloatingHearts() {
   const container = document.getElementById("floatingHearts");
   const heartCount = 15;
+  
+  // Danh sách các icon troll/tếu tếu
+  const trollIcons = ["😂", "🤣", "😜", "🤪", "😝", "🤑", "🤡", "👻", "💩", "🙈", "🐒", "🦄", "🍌", "🎃", "🍕"];
 
   for (let i = 0; i < heartCount; i++) {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    heart.innerHTML = "❤️";
+    // Chọn ngẫu nhiên một icon từ mảng
+    heart.innerHTML = trollIcons[Math.floor(Math.random() * trollIcons.length)];
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.fontSize = Math.random() * 20 + 10 + "px";
     heart.style.animationDuration = Math.random() * 10 + 10 + "s";
@@ -27,7 +31,7 @@ function checkCode() {
   const enteredCode = Array.from(inputs)
     .map((input) => input.value)
     .join("");
-  const correctCode = "2606"; // Mã mở khóa
+  const correctCode = "0107"; // Mã mở khóa
 
   const messageEl = document.getElementById("lockMessage");
   const lockImg = document.querySelector(".heart-lock");
@@ -170,21 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-function createFloatingHearts() {
-  const container = document.getElementById("floatingHearts");
-  const heartCount = 15;
 
-  for (let i = 0; i < heartCount; i++) {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 10 + "px";
-    heart.style.animationDuration = Math.random() * 10 + 10 + "s";
-    heart.style.animationDelay = Math.random() * 5 + "s";
-    container.appendChild(heart);
-  }
-}
 
 function createConfetti() {
   const envelope = document.getElementById("envelope");
